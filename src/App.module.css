@@ -1,0 +1,21 @@
+.container {
+  text-align: center;
+  background-color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: aliceblue;
+
+}
+
+.main {
+  flex-grow: 1;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link {
+  color: red;
+}
