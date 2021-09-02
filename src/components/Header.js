@@ -1,32 +1,33 @@
 import logo from '../logo.jpg';
 import styles from './Header.module.css';
 
-export default function Header() {
+export default function Header({ setCards }) {
+
+    const dealNewCards = () => null;
+    const hit = () => null;
+    const stay = () => null;
 
     return (
         <header className={styles.header}>
             <div className={styles.name}><img className={styles.logo} alt="" src={logo}></img>BLACKJACK</div>
-            <a
-                className={styles.link}
-                href=""
-                rel="noopener noreferrer"
+            <button
+                className={styles.button}
+                onClick={dealNewCards}
             >
                 Deal new cards
-            </a>
-            <a
-                className={styles.link}
-                href=""
-                rel="noopener noreferrer"
+            </button>
+            <button
+                className={styles.button}
+                onClick={hit}
             >
                 Hit
-            </a>
-            <a
-                className={styles.link}
-                href=""
-                rel="noopener noreferrer"
+            </button>
+            <button
+                className={styles.button}
+                onClick={stay}
             >
                 Stay
-            </a>
+            </button>
         </header>
 
     )
