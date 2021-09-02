@@ -7,7 +7,7 @@ import axios from 'axios';
 
 function App() {
 
-  const [cards, setCards] = useState("");
+  const [cards, setCards] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:8080/numOfDecks?3")
