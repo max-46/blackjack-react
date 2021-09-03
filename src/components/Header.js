@@ -4,8 +4,6 @@ import styles from './Header.module.css';
 
 export default function Header({ setPlayers, setWinner, winner, dealNewCards }) {
 
-    const winnerDeclared = winner != null && winner != "";
-
     const hit = () => axios.get("http://localhost:8080/hit")
         .then(resp => {
             setPlayers(resp.data[0]);
@@ -33,14 +31,14 @@ export default function Header({ setPlayers, setWinner, winner, dealNewCards }) 
             <button
                 className={styles.button}
                 onClick={hit}
-                disabled={winnerDeclared}
+                disabled={winner}
             >
                 Hit
             </button>
             <button
                 className={styles.button}
                 onClick={stay}
-                disabled={winnerDeclared}
+                disabled={winner}
             >
                 Stay
             </button>
