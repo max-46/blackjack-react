@@ -1,11 +1,13 @@
 import styles from './BlackjackTable.module.css';
 
-export default function BlackjackTable({ cards }) {
+export default function BlackjackTable({ players }) {
 
     return (
         <main className={styles.main}>
             <div>
-                CARDS: {cards.length > 0 ? cards.reduce((player, dealer) => player + dealer) : "Click the button above to get new cards."}
+                {players.length > 0 ?
+                    players.map(p => <div className={styles.card}>{p.name + ":" + p.cards.map(c => " " + c.cardType)}</div>)                  
+                    : "Click the button above to get new cards."}
             </div>
         </main>
     )

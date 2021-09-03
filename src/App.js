@@ -7,18 +7,18 @@ import axios from 'axios';
 
 function App() {
 
-  const [cards, setCards] = useState([]);
+  const [players, setPlayers] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:8080/numOfDecks?3")
-      .then(resp => setCards(resp.data))
+      .then(resp => setPlayers(resp.data))
       .catch(err => console.error(err));
   }, [])
 
   return (
     <div className={styles.container}>
-      <Header setCards={setCards} />
-      <BlackjackTable cards={cards} />
+      <Header setPlayers={setPlayers} />
+      <BlackjackTable players={players} />
       <Footer />
     </div>
   );
