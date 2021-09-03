@@ -13,8 +13,9 @@ function App() {
   const dealNewCards = () => {
     axios.get("http://localhost:8080/numOfDecks?3")
     .then(resp => {
-      setPlayers(resp.data[0]);
-      setWinner(resp.data[1]);
+      const [players, winner] = resp.data;
+      setPlayers(players);
+      setWinner(winner);
     })
     .catch(err => console.error(err));
   }
