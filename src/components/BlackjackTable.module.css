@@ -5,3 +5,11 @@
     justify-content: center;
     align-items: center;
   }
+
+.dealer {
+  color: red;
+}
+
+.player {
+  color: yellow;
+}
