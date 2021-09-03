@@ -13,7 +13,8 @@ function App() {
   const dealNewCards = () => {
     axios.get("http://localhost:8080/numOfDecks?3")
     .then(resp => {
-      setPlayers(resp.data);
+      const [players, winner] = resp.data;
+      setPlayers(players);
       setWinner(null);
     })
     .catch(err => console.error(err));
@@ -25,7 +26,7 @@ function App() {
 
   return (
     <div className={styles.container}>
-      <Header setPlayers={setPlayers} setWinner={setWinner} dealNewCards={dealNewCards} />
+      <Header setPlayers={setPlayers} setWinner={setWinner} winner={winner} dealNewCards={dealNewCards} />
       <BlackjackTable players={players} winner={winner} />
       <Footer />
     </div>

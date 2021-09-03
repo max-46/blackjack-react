@@ -2,12 +2,14 @@ import axios from 'axios';
 import logo from '../logo.jpg';
 import styles from './Header.module.css';
 
-export default function Header({ setPlayers, setWinner, dealNewCards }) {
+export default function Header({ setPlayers, setWinner, winner, dealNewCards }) {
+
+    const winnerDeclared = winner != null && winner != "";
 
     const hit = () => axios.get("http://localhost:8080/hit")
         .then(resp => {
-            setPlayers(resp.data);
-            setWinner(null);
+            setPlayers(resp.data[0]);
+            setWinner(resp.data[1]);
         })
         .catch(err => console.error(err));
 
@@ -31,12 +33,14 @@ export default function Header({ setPlayers, setWinner, dealNewCards }) {
             <button
                 className={styles.button}
                 onClick={hit}
+                disabled={winnerDeclared}
             >
                 Hit
             </button>
             <button
                 className={styles.button}
                 onClick={stay}
+                disabled={winnerDeclared}
             >
                 Stay
             </button>
