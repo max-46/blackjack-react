@@ -14,7 +14,7 @@ function App() {
     axios.get("http://localhost:8080/numOfDecks?3")
     .then(resp => {
       setPlayers(resp.data[0]);
-      setWinner(null);
+      setWinner(resp.data[1]);
     })
     .catch(err => console.error(err));
   }
