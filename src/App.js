@@ -8,10 +8,14 @@ import axios from 'axios';
 function App() {
 
   const [players, setPlayers] = useState([]);
+  const [winner, setWinner] = useState(null);
 
   const dealNewCards = () => {
     axios.get("http://localhost:8080/numOfDecks?3")
-    .then(resp => setPlayers(resp.data))
+    .then(resp => {
+      setPlayers(resp.data);
+      setWinner(null);
+    })
     .catch(err => console.error(err));
   }
 
@@ -21,8 +25,8 @@ function App() {
 
   return (
     <div className={styles.container}>
-      <Header setPlayers={setPlayers} dealNewCards={dealNewCards} />
-      <BlackjackTable players={players} />
+      <Header setPlayers={setPlayers} setWinner={setWinner} dealNewCards={dealNewCards} />
+      <BlackjackTable players={players} winner={winner} />
       <Footer />
     </div>
   );

@@ -1,10 +1,23 @@
+import axios from 'axios';
 import logo from '../logo.jpg';
 import styles from './Header.module.css';
 
-export default function Header({ setPlayers, dealNewCards }) {
-    
-    const hit = () => null;
-    const stay = () => null;
+export default function Header({ setPlayers, setWinner, dealNewCards }) {
+
+    const hit = () => axios.get("http://localhost:8080/hit")
+        .then(resp => {
+            setPlayers(resp.data);
+            setWinner(null);
+        })
+        .catch(err => console.error(err));
+
+    const stay = () => axios.get("http://localhost:8080/stay")
+        .then(resp => {
+            const [players, winner] = resp.data;
+            setPlayers(players);
+            setWinner(winner);
+        })
+        .catch(err => console.error(err));
 
     return (
         <header className={styles.header}>
