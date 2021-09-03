@@ -1,9 +1,8 @@
 import logo from '../logo.jpg';
 import styles from './Header.module.css';
 
-export default function Header({ setPlayers }) {
-
-    const dealNewCards = () => null;
+export default function Header({ setPlayers, dealNewCards }) {
+    
     const hit = () => null;
     const stay = () => null;
 
